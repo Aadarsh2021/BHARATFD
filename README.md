@@ -1,174 +1,45 @@
-# 📖 FAQ API - Multilingual Support 🌍
+# 🌐 FAQ API - Multilingual Management System
 
-🚀 A REST API built using Django to manage FAQs with multi-language support and optimized performance.
+[![Django](https://img.shields.io/badge/Django-4.2-brightgreen)](https://www.djangoproject.com/)
+[![Redis](https://img.shields.io/badge/Redis-7.0-red)](https://redis.io/)
+[![Docker](https://img.shields.io/badge/Docker-24.0-blue)](https://www.docker.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## 🎯 Objective
-This project was developed as part of a backend developer hiring test, focusing on:
-- ✔ Django models with WYSIWYG editor support
-- ✔ Multi-language translations for FAQs
-- ✔ PEP8 compliance and best practices
-- ✔ Detailed README and proper Git commit messages
+A high-performance REST API for managing multilingual FAQs with automated translations and Redis caching.
 
-## ✅ Features
-- ✔ Dynamic FAQ Management – Create, update, delete FAQs
-- ✔ Multi-Language Support – Supports Hindi, Bengali, Urdu, and more
-- ✔ WYSIWYG Editor – Uses django-ckeditor-5 for rich text formatting
-- ✔ Optimized Performance – Cached translations using Redis
-- ✔ Google Translate API – Automates translations at object creation
-- ✔ Admin Panel – Manage FAQs via Django Admin Interface
-- ✔ Fully Tested – Unit tests for API & models using pytest
-- ✔ Docker Support – Includes Dockerfile for easy containerization
+![System Architecture](docs/architecture-diagram.png) <!-- Add actual diagram in your repo -->
 
-## 📌 Installation Guide
+## 📑 Table of Contents
+- [Features](#-features)
+- [Quick Start](#-quick-start)
+- [API Documentation](#-api-documentation)
+- [Deployment](#-deployment)
+- [Contributing](#-contributing)
+- [License](#-license)
 
-### 1️⃣ Clone the Repository
-```bash
-git clone https://github.com/Aadarsh2021/faq-api.git
-cd faq-api
+## ✨ Features
 
+| Feature                | Description                                                                 |
+|------------------------|-----------------------------------------------------------------------------|
+| **Multi-language**     | Supports 10+ languages including Hindi, Bengali, Urdu                      |
+| **Auto-translation**   | Google Translate API integration                                           |
+| **Rich Text Editor**   | WYSIWYG editor with django-ckeditor-5                                       |
+| **Caching**            | Redis-backed translation caching                                           |
+| **Admin Interface**    | Full CRUD operations through Django Admin                                  |
+| **Docker Support**     | Containerized development and production setups                            |
+| **CI/CD**              | GitHub Actions for automated testing and deployment                        |
 
-2️⃣ Set Up Virtual Environment
-bash
-Copy
-python -m venv venv
-# macOS/Linux
-source venv/bin/activate
-# Windows
-venv\Scripts\activate
-3️⃣ Install Dependencies
-bash
-Copy
-pip install -r requirements.txt
-4️⃣ Environment Variables
-Create .env file:
+## 🚀 Quick Start
 
-ini
-Copy
-SECRET_KEY=your-secret-key
-DEBUG=True
-ALLOWED_HOSTS=localhost,127.0.0.1
-DATABASE_URL=sqlite:///db.sqlite3
-REDIS_URL=redis://127.0.0.1:6379/1
-5️⃣ Database Setup
-bash
-Copy
-python manage.py migrate
-python manage.py createsuperuser
-6️⃣ Run Server
-bash
-Copy
-python manage.py runserver
-API Live at: http://127.0.0.1:8000/
+### Prerequisites
+- Python 3.10+
+- Redis Server
+- Docker (optional)
+- Google Cloud Service Account
 
-📌 API Endpoints
-🔹 Get All FAQs
-http
-Copy
-GET /api/faqs/
-Response:
+### Local Development
 
-json
-Copy
-[
-    {
-        "question": "What is Django?",
-        "answer": "Django is a Python web framework."
-    }
-]
-🔹 Get Hindi FAQs
-http
-Copy
-GET /api/faqs/?lang=hi
-Response:
-
-json
-Copy
-[
-    {
-        "question": "Django क्या है?",
-        "answer": "Django एक पायथन वेब फ्रेमवर्क है।"
-    }
-]
-🔹 Get Bengali FAQs
-http
-Copy
-GET /api/faqs/?lang=bn
-🔹 Get Urdu FAQs
-http
-Copy
-GET /api/faqs/?lang=ur
-📌 Admin Panel
-Access: http://localhost:8000/admin/
-Use superuser credentials created during setup.
-
-📌 Caching Mechanism
-Redis-based caching for translations
-
-Configure via REDIS_URL in .env
-
-Automatic cache invalidation on FAQ updates
-
-📌 Unit Testing
-bash
-Copy
-pytest
-📌 Version Control
-Commit Convention:
-
-Copy
-feat: Add multilingual FAQ model
-fix: Improve translation caching
-docs: Update README with API examples
-Push Changes:
-
-bash
-Copy
-git add .
-git commit -m "docs: Updated README with full API details"
-git push origin main
-📌 Docker Support
-Build & Run:
-
-bash
-Copy
-docker build -t faq-api .
-docker run -d -p 8000:8000 faq-api
-📌 Contributing
-Fork the repository
-
-Create feature branch:
-
-bash
-Copy
-git checkout -b feature-new
-Commit changes:
-
-bash
-Copy
-git commit -m "feat: Added new language support"
-Push to branch:
-
-bash
-Copy
-git push origin feature-new
-Open a Pull Request
-
-📌 Contact
-Author: Aadarsh Thakur
-
-Email: thakuraadarsh1@gmail.com
-
-GitHub: Aadarsh2021
-
-Copy
-
-This version:
-1. Uses proper Markdown syntax for GitHub rendering
-2. Maintains consistent emoji usage
-3. Has proper code block formatting with language identifiers
-4. Uses hierarchical headers
-5. Includes clear section separation
-6. Maintains all original information while improving readability
-7. Follows GitHub-Flavored Markdown standards
-
-The preview in VS Code will match GitHub's rendering closely, especially when using the Markdown Preview Enhanced extension.
+1. **Clone Repository**
+   ```bash
+   git clone https://github.com/Aadarsh2021/faq-api.git
+   cd faq-api
