@@ -109,8 +109,9 @@ Copy
 Edit
 GET /api/faqs/?lang=ur
 📌 Admin Panel
-URL: http://127.0.0.1:8000/admin/
-Login using the superuser credentials.
+🔹 URL: http://127.0.0.1:8000/admin/
+🔹 Login using the superuser credentials.
+
 📌 Caching Mechanism
 Uses Redis for optimized caching.
 Speeds up API response times by storing translations in Redis.
@@ -152,7 +153,7 @@ docker build -t faq-api .
 docker run -d -p 8000:8000 faq-api
 📌 Contributing
 🔹 Want to improve this project?
-Fork the repo, make your changes, and submit a pull request (PR).
+1️⃣ Fork the repo, make your changes, and submit a pull request (PR).
 
 bash
 Copy
@@ -165,8 +166,7 @@ git push origin feature-new
 🔹 Email: thakuraadarsh1@gmail.com
 🔹 GitHub: Aadarsh2021
 
-📌 ✅ Now push this updated README to GitHub:
-
+✅ Push this updated README to GitHub:
 bash
 Copy
 Edit
