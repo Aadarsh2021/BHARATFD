@@ -1,26 +1,19 @@
 from rest_framework import serializers
-from .models import FAQ
-from bs4 import BeautifulSoup
-
+from faq.models import FAQ
 
 class FAQSerializer(serializers.ModelSerializer):
-    answer = serializers.SerializerMethodField()
-
-    def get_answer(self, obj):
-        return (
-            f"<p>{obj.answer}</p>" if not obj.answer.startswith("<p>") else obj.answer
-        )
-
     class Meta:
         model = FAQ
-        fields = "__all__"
+        fields = ["question", "answer"]
 
+    def validate_question(self, value):
+        """Ensure question is not empty"""
+        if not value.strip():
+            raise serializers.ValidationError("Question cannot be empty.")
+        return value
 
-def get_answer(self, obj):
-    return BeautifulSoup(obj.answer, "html.parser").text  # Removes HTML
-
-def validate_question(self, value):
-    """Ensure question is not empty"""
-    if not value.strip():
-        raise serializers.ValidationError("Question cannot be empty.")
-    return value
+    def validate_answer(self, value):
+        """Ensure answer is not empty"""
+        if not value.strip():
+            raise serializers.ValidationError("Answer cannot be empty.")
+        return value
