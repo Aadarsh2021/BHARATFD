@@ -43,3 +43,144 @@ A high-performance REST API for managing multilingual FAQs with automated transl
    ```bash
    git clone https://github.com/Aadarsh2021/faq-api.git
    cd faq-api
+Setup Environment
+
+bash
+Copy
+python -m venv .venv && source .venv/bin/activate  # Linux/macOS
+# For Windows: .venv\Scripts\activate
+Install Dependencies
+
+bash
+Copy
+pip install -r requirements.txt
+Configure Environment
+Create .env file:
+
+ini
+Copy
+DEBUG=True
+SECRET_KEY=your-secret-key
+DATABASE_URL=sqlite:///db.sqlite3
+REDIS_URL=redis://localhost:6379/1
+GOOGLE_APPLICATION_CREDENTIALS=./service-account.json
+Database Setup
+
+bash
+Copy
+python manage.py migrate
+python manage.py createsuperuser
+Run Server
+
+bash
+Copy
+python manage.py runserver
+Access API at: http://localhost:8000/api/faqs/
+
+📚 API Documentation
+Endpoints
+http
+Copy
+GET /api/faqs/?lang={language_code}
+POST /api/faqs/
+PUT /api/faqs/{id}/
+DELETE /api/faqs/{id}/
+Example Requests
+Get English FAQs
+
+bash
+Copy
+curl http://localhost:8000/api/faqs/?lang=en
+Create New FAQ
+
+bash
+Copy
+curl -X POST -H "Content-Type: application/json" -d '{
+  "question": "How to use this API?",
+  "answer": "Check the documentation for implementation details."
+}' http://localhost:8000/api/faqs/
+Response Schema
+json
+Copy
+{
+  "id": 1,
+  "question": "What is Django?",
+  "answer": "A high-level Python web framework...",
+  "language": "en",
+  "created_at": "2023-08-20T12:34:56Z",
+  "updated_at": "2023-08-20T12:34:56Z"
+}
+🐳 Deployment
+Docker Setup
+bash
+Copy
+docker-compose up --build
+Production Environment
+yaml
+Copy
+# docker-compose.prod.yml
+version: '3.8'
+
+services:
+  web:
+    image: faq-api:prod
+    command: gunicorn faq_api.wsgi:application --bind 0.0.0.0:8000
+    env_file:
+      - .env.prod
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+      - postgres
+
+  redis:
+    image: redis:alpine
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: faq_db
+      POSTGRES_USER: faq_user
+      POSTGRES_PASSWORD: strongpassword
+🧪 Testing
+Run test suite with coverage:
+
+bash
+Copy
+pytest --cov=faq_api --cov-report=html
+🤝 Contributing
+Fork the repository
+
+Create feature branch:
+
+bash
+Copy
+git checkout -b feat/new-feature
+Commit changes:
+
+bash
+Copy
+git commit -m "feat: Add new awesome feature"
+Push to branch:
+
+bash
+Copy
+git push origin feat/new-feature
+Open a Pull Request
+
+Code Standards:
+
+PEP8 compliance enforced with flake8
+
+100% test coverage for new features
+
+Type hints for all public methods
+
+Meaningful commit messages
+
+📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+Maintainer: Aadarsh Thakur
+Email: thakuraadarsh1@gmail.com
+Documentation: API Reference Guide
