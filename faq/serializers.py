@@ -18,3 +18,9 @@ class FAQSerializer(serializers.ModelSerializer):
 
 def get_answer(self, obj):
     return BeautifulSoup(obj.answer, "html.parser").text  # Removes HTML
+
+def validate_question(self, value):
+    """Ensure question is not empty"""
+    if not value.strip():
+        raise serializers.ValidationError("Question cannot be empty.")
+    return value
