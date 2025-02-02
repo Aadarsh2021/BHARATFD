@@ -2,6 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import FAQ
 
+
 class FAQListView(APIView):
     def get(self, request):
         lang = request.GET.get("lang", "en")  # Default to English

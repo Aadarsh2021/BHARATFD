@@ -8,18 +8,25 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='FAQ',
+            name="FAQ",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('question', models.TextField()),
-                ('answer', django_ckeditor_5.fields.CKEditor5Field()),
-                ('question_hi', models.TextField(blank=True, null=True)),
-                ('question_bn', models.TextField(blank=True, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("question", models.TextField()),
+                ("answer", django_ckeditor_5.fields.CKEditor5Field()),
+                ("question_hi", models.TextField(blank=True, null=True)),
+                ("question_bn", models.TextField(blank=True, null=True)),
             ],
         ),
     ]

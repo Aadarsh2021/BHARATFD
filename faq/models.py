@@ -15,8 +15,9 @@ INDIAN_LANGUAGES = {
     "pa": "Punjabi",
     "ta": "Tamil",
     "te": "Telugu",
-    "ur": "Urdu"
+    "ur": "Urdu",
 }
+
 
 class FAQ(models.Model):
     question = models.TextField()
@@ -35,10 +36,18 @@ class FAQ(models.Model):
 
             # If the translation is missing or null, generate it
             if not getattr(self, question_field):
-                setattr(self, question_field, translator.translate(self.question, dest=lang_code).text)
-            
+                setattr(
+                    self,
+                    question_field,
+                    translator.translate(self.question, dest=lang_code).text,
+                )
+
             if not getattr(self, answer_field):
-                setattr(self, answer_field, translator.translate(self.answer, dest=lang_code).text)
+                setattr(
+                    self,
+                    answer_field,
+                    translator.translate(self.answer, dest=lang_code).text,
+                )
 
         super().save(*args, **kwargs)
 
