@@ -182,7 +182,5 @@ Meaningful commit messages
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 Maintainer: Aadarsh Thakur
-
 Email: thakuraadarsh1@gmail.com
-
 Documentation: API Reference Guide
