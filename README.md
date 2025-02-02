@@ -1,10 +1,11 @@
 # 📝 FAQ API - Multilingual Support 🌍  
 
 🚀 **A powerful REST API for managing FAQs with multilingual support!**  
-✔ Supports multiple languages (**Hindi, Bengali, Tamil, Telugu, etc.**)  
+✔ Supports multiple languages (**Hindi, Bengali, Tamil, Telugu, Urdu, etc.**)  
 ✔ Uses **Google Translate API** for auto-translation  
 ✔ Optimized with **Redis caching** for performance  
-✔ Full-featured **Django Admin Panel** for easy management  
+✔ Full-featured **Django Admin Panel** for easy FAQ management  
+✔ **Dockerized & Deployable** with `docker-compose`  
 ✔ **Fully tested** with `pytest` for reliability  
 
 ---
@@ -18,7 +19,7 @@
 
 ---
 
-## 🔧 **Installation Guide**
+## 🔧 **Installation Guide (Without Docker)**
 ### **Step 1: Clone the Repository**
 ```bash
 git clone https://github.com/Aadarsh2021/faq-api.git
